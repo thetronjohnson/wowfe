@@ -160,4 +160,8 @@ export default {
     margin-top: 1vw;
     float: right;
 }
+.hero{
+  margin-left: 4vw;
+  margin-right: 4vw;
+}
 </style>
