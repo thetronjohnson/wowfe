@@ -26,9 +26,9 @@
                     <a class="avatar" v-if="user">
                       <img/>
                     </a>
-                    <a class="button is-light" v-if="!user">
+                    <router-link to="/login" class="button is-light" v-if="!user">
                         Log in
-                    </a>
+                    </router-link>
                     <a class="button is-danger" v-if="user">
                         Log out
                     </a>

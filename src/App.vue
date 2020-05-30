@@ -1,18 +1,17 @@
 <template>
   <div id="app">
-    <Index/>
+    <transition name='slide'>
+      <router-view/>
+    </transition>
   </div>
 </template>
 
 <script>
-import Index from './components/Index.vue'
 
 export default {
   name: 'App',
-  components: {
-    Index,
-  }
 }
+
 </script>
 
 <style>
