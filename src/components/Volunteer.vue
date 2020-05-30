@@ -1,32 +1,55 @@
 <template>
-    <section>
-        <h1 class="title">Volunteer with WOW</h1>
-        <div class="volunteerform container">
-        <b-field label="Email" type="is-primary" class="info">
-            <b-input  placeholder="Enter your email"></b-input>
-        </b-field>
-        <b-field label="Username" type="is-primary" class="info">
-            <b-input maxlength="30" placeholder="Choose your username"></b-input>
-        </b-field>
-        <b-field label="Password" type="is-primary" class="info">
-            <b-input type="password" placeholder="Enter your password"></b-input>
-        </b-field>
-        <b-field label="Confirm password" type="is-primary" class="info">
-            <b-input type="password" placeholder="Confirm your password"></b-input>
-        </b-field>
-        <b-field>
-                <button class="button is-primary">
-                    Register
-                </button>
-        </b-field>
-        </div>
-    </section>
+  <section>
+    <h1 class="title">Volunteer with WOW</h1>
+    <form class="volunteerform container" @submit="submitForm" ref="form">
+      <b-field label="Email" type="is-primary" class="info">
+        <b-input v-model="form.email" placeholder="Enter your email"></b-input>
+      </b-field>
+      <b-field label="Username" type="is-primary" class="info">
+        <b-input v-model="form.username" maxlength="30" placeholder="Choose your username"></b-input>
+      </b-field>
+      <b-field label="Password" type="is-primary" class="info">
+        <b-input v-model="form.password" type="password" placeholder="Enter your password"></b-input>
+      </b-field>
+      <b-field label="Confirm password" type="is-primary" class="info">
+        <b-input type="password" placeholder="Confirm your password"></b-input>
+      </b-field>
+      <b-field>
+        <button class="button is-primary">
+          Register
+        </button>
+      </b-field>
+    </form>
+  </section>
 </template>
-
 
 <script>
 export default {
   name: 'Volunteer',
+
+  data () {
+    return {
+      form: {
+        email: '',
+        username: '',
+        password: ''
+      }
+    }
+  },
+  
+  methods: {
+    submitForm (e) {
+      e.preventDefault()
+
+      this.axios.post(this.$API.user.register, this.form).then((response) => {
+        if (response.status === 201) {
+          // TODO: add response.data.token to store, login the user using the token
+        } else {
+          // TODO: show response.errors.message
+        }
+      })
+    }
+  }
 }
 </script>
 
@@ -44,7 +67,7 @@ export default {
   margin-top: 1vw;
 }
  .title{
-     margin-top:10vw;
+     margin-top:5vw;
      background-color:hsl(217, 71%, 53%);
      color: white;
      margin-left: 25vw;
