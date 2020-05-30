@@ -2,12 +2,12 @@
   <section>
     <h1 class="title">Log in</h1>
     <form class="loginform container" @submit="submitForm">
-      <b-field label="Username" type="is-primary" class="info">
-        <b-input maxlength="30" placeholder="Enter your username"></b-input>
+      <b-field label="Username or Email" type="is-primary" class="info">
+        <b-input v-model="form.user" maxlength="30" placeholder="Enter your username or email"></b-input>
       </b-field>
 
       <b-field label="Password" type="is-primary" class="info">
-        <b-input type="password" placeholder="Enter your password"></b-input>
+        <b-input v-model="form.password" type="password" placeholder="Enter your password"></b-input>
       </b-field>
       <b-field>
         <button class="button is-primary">
@@ -23,13 +23,22 @@
 export default {
   name: 'Login',
 
+  data () {
+    return {
+      form: {
+        user: '',
+        password: ''
+      }
+    }
+  },
+
   methods: {
     submitForm (e) {
       e.preventDefault()
 
       this.axios.post(this.$API.user.login, this.form).then((response) => {
         if (response.status === 200) {
-          // TODO: store response.data.tokens
+          // TODO: store response.data.token
         } else {
           // TODO: show response.error
         }
