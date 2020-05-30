@@ -1,17 +1,22 @@
 <template>
     <section>
-        <h1 class="title">Log in</h1>
+        <h1 class="title">Volunteer with WOW</h1>
         <div class="loginform container">
-        <b-field label="Username" type="is-primary" class="info">
-            <b-input maxlength="30" placeholder="Enter your username"></b-input>
+        <b-field label="Email" type="is-primary" class="info">
+            <b-input  placeholder="Enter your email"></b-input>
         </b-field>
-
+        <b-field label="Username" type="is-primary" class="info">
+            <b-input maxlength="30" placeholder="Choose your username"></b-input>
+        </b-field>
         <b-field label="Password" type="is-primary" class="info">
             <b-input type="password" placeholder="Enter your password"></b-input>
         </b-field>
+        <b-field label="Confirm password" type="is-primary" class="info">
+            <b-input type="password" placeholder="Confirm your password"></b-input>
+        </b-field>
         <b-field>
                 <button class="button is-primary">
-                    Login
+                    Register
                 </button>
         </b-field>
         </div>
@@ -21,7 +26,7 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Volunteer',
 }
 </script>
 

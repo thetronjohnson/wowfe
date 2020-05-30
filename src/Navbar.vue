@@ -20,9 +20,9 @@
         <template slot="end">
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <a class="button is-white" v-if="!user">
+                    <router-link to="/volunteer" class="button is-white" v-if="!user">
                         <strong>Volunteer</strong>
-                    </a>
+                    </router-link>
                     <a class="avatar" v-if="user">
                       <img/>
                     </a>
