@@ -9,10 +9,13 @@ import 'buefy/dist/buefy.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import Vuex from 'vuex'
+
 import router from './router'
 
 Vue.use(VueAxios, axios)
 Vue.use(Buefy)
+Vue.use(Vuex)
 
 Vue.config.productionTip = false
 
@@ -24,6 +27,11 @@ Vue.prototype.$API = {
   }
 }
 
+const store = new Vuex.Store({
+
+
+})
+
 new Vue({
   router,
   render: h => h(Navbar)
@@ -31,6 +39,7 @@ new Vue({
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
 

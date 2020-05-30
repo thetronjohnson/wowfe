@@ -23,9 +23,9 @@
                     <router-link to="/volunteer" class="button is-white" v-if="!user">
                         <strong>Volunteer</strong>
                     </router-link>
-                    <a class="avatar" v-if="user">
-                      <img/>
-                    </a>
+                    <router-link to="/profile" class="button is-white" v-if="user">
+                        Profile
+                    </router-link>                      
                     <router-link to="/login" class="button is-light" v-if="!user">
                         Log in
                     </router-link>
@@ -44,8 +44,13 @@ export default {
     data(){
       return{
         // if user is logged in then show log out and avatar, else show login adn volunteer
-        user:false
+        user:true,
       }
 }
 }
 </script>
+<style scoped>
+.avatar{
+    color:white;
+}
+</style>
