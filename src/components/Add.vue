@@ -1,22 +1,16 @@
 <template>
     <section>
-        <h1 class="title">Volunteer with WOW</h1>
+        <h1 class="title">Rain Data</h1>
         <div class="volunteerform container">
-        <b-field label="Email" type="is-primary" class="info">
-            <b-input  placeholder="Enter your email"></b-input>
+        <b-field label="Rain in mm" type="is-primary" class="info">
+            <b-input  placeholder="Enter rain data in mm"></b-input>
         </b-field>
-        <b-field label="Username" type="is-primary" class="info">
-            <b-input maxlength="30" placeholder="Choose your username"></b-input>
-        </b-field>
-        <b-field label="Password" type="is-primary" class="info">
-            <b-input type="password" placeholder="Enter your password"></b-input>
-        </b-field>
-        <b-field label="Confirm password" type="is-primary" class="info">
-            <b-input type="password" placeholder="Confirm your password"></b-input>
+        <b-field label="Notes" type="is-primary" class="info">
+            <b-input placeholder="Any notes"></b-input>
         </b-field>
         <b-field>
                 <button class="button is-primary">
-                    Register
+                    Add Data
                 </button>
         </b-field>
         </div>
@@ -26,7 +20,7 @@
 
 <script>
 export default {
-  name: 'Volunteer',
+  name: 'Add',
 }
 </script>
 

@@ -7,9 +7,9 @@
                     :columns="columns">
                 </b-table>
         <b-field>
-        <button class="button is-primary">
+        <router-link to="/add" class="button is-primary">
                     Add
-         </button>
+        </router-link>
         </b-field>
         </div>
     </section>
