@@ -5,6 +5,7 @@ import Footer from './Footer.vue'
 
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
+import 'leaflet/dist/leaflet.css'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
