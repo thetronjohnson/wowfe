@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="loginclass">
   <div class="loginForm has-text-centered">
     <form>
       <label class="label">Username</label>
@@ -19,5 +19,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>
