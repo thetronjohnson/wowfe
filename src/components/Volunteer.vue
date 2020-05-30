@@ -48,7 +48,7 @@ export default {
           // TODO: show response.errors.message
         }
       })
-    }
+    },
   }
 }
 </script>
