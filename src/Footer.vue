@@ -14,9 +14,9 @@ export default {
 </script>
 <style scoped>
 #footer {
-  position: absolute;
-  bottom: 0;
+  position: sticky;
   width: 100%;
-  height: 2.5rem;           
+  margin-top: 5vw;     
+  padding-bottom: 3vw;     
 }
 </style>
