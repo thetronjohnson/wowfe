@@ -6,6 +6,7 @@ import Volunteer from '@/components/Volunteer'
 import Profile from '@/components/Profile'
 import Dashboard from '@/components/Dashboard'
 import Add from '@/components/Add'
+import Faq from '@/components/Faq'
 
 Vue.use(Router)
 
@@ -41,10 +42,10 @@ export default new Router({
       name: 'Add',
       component: Add
     },
-    // {
-    //   path: '/about',
-    //   name: 'About',
-    //   component: About
-    // }
+    {
+      path: '/faq',
+      name: 'Faq',
+      component: Faq
+    }
   ]
 })

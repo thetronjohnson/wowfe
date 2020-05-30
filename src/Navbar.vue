@@ -12,9 +12,9 @@
             <b-navbar-item tag="router-link" :to="{ path: '/' }" >
                 Home
             </b-navbar-item>
-            <b-navbar-item href="#">
-                About
-            </b-navbar-item>
+           <b-navbar-item tag="router-link" :to="{ path: '/faq' }" >
+                FAQ
+           </b-navbar-item>
         </template>
 
         <template slot="end">
