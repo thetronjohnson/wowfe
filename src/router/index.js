@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import Login from '@/components/Login'
 import Volunteer from '@/components/Volunteer'
+import Profile from '@/components/Profile'
 
 
 Vue.use(Router)
@@ -24,11 +25,11 @@ export default new Router({
       name: 'Login',
       component: Login
     },
-    // {
-    //   path: '/profile',
-    //   name: 'Profile',
-    //   component: Profile
-    // },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
+    },
     // {
     //   path: '/dashboard',
     //   name: 'Dashboard',

@@ -27,7 +27,9 @@
             </p>
         </div>
         <div>
-            <a class="button is-link" href="">Volunteer</a>
+            <router-link to="/volunteer" class="button is-primary" v-if="!user">
+                        <strong>Volunteer</strong>
+            </router-link>
         </div>
     </div>
     </div>
