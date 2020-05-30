@@ -38,7 +38,7 @@
 
 
 export default {
-  name: 'Login',
+  name: 'Profile',
    data: function () {
     return {
       name: "Joe" 

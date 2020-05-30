@@ -4,6 +4,7 @@ import Index from '@/components/Index'
 import Login from '@/components/Login'
 import Volunteer from '@/components/Volunteer'
 import Profile from '@/components/Profile'
+import Dashboard from '@/components/Dashboard'
 
 
 Vue.use(Router)
@@ -30,11 +31,11 @@ export default new Router({
       name: 'Profile',
       component: Profile
     },
-    // {
-    //   path: '/dashboard',
-    //   name: 'Dashboard',
-    //   component: Dashboard
-    // },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
+    },
     // {
     //   path: '/about',
     //   name: 'About',
