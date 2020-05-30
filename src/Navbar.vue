@@ -43,7 +43,7 @@ export default {
     name: 'Navbar',
     data(){
       return{
-        user:true // if user is logged in then show log out and avatar, else show login adn volunteer
+        user:false // if user is logged in then show log out and avatar, else show login adn volunteer
       }
     },
 }
