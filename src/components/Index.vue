@@ -27,6 +27,22 @@
         </l-map>
       </section>
     </div>
+    <div class="bar">
+    <div class="columns">
+      <div class="column block">
+         <h3>Temperature {goes here}</h3>
+      </div>
+      <div class="column block">
+         <h3>Humidity {goes here}</h3>
+      </div>
+      <div class="column block">
+         <h3>Wind {goes here}</h3>
+      </div>
+      <div class="column block">
+         <h3>Temperature {goes here}</h3>
+      </div>      
+    </div>
+    </div>
     <div class="sec-container">
       <div>
         <h3 class="about-title">About What's Our Weather</h3>
@@ -43,7 +59,7 @@
         </p>
       </div>
       <div>
-        <router-link to="/volunteer" class="button is-primary" v-if="!user">
+        <router-link to="/volunteer" class="button is-primary is-medium" v-if="!user">
           <strong>Volunteer</strong>
         </router-link>
       </div>
@@ -166,5 +182,19 @@ export default {
 .hero{
   margin-left: 4vw;
   margin-right: 4vw;
+}
+.bar{
+  margin-top:2vw;
+  background-color:white;
+  color: hsl(217, 71%, 53%);
+  margin-left: 4vw;
+  margin-right: 4vw;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.bar:hover{
+   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 </style>
