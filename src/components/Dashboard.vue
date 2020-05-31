@@ -1,16 +1,19 @@
 <template>
+<div>
+  
   <section>
     <div class="columns">
       <div class="column is-half">
+            <router-link to="/add-data" class="button add-data is-primary">Add Data</router-link>
         <h1 class="title" id="profile">{{ name }}'s Contributions</h1>
         <div class="container table">
           <b-table :data="data" :columns="columns"></b-table>
-          <b-field>
-            <router-link to="/add-data" class="button is-primary is-fullwidth">Add</router-link>
-          </b-field>
         </div>
       </div>
       <div class="column tiles">
+        <div class="buttons">
+            <router-link to="/add-gauge" class="button is-primary ">Add Gauge</router-link>
+      </div>
         <div class="card" v-for="gauge in gauges" :key="gauge">
           <header class="card-header">
             <p class="card-header-title">{{gauge.name}}</p>
@@ -30,6 +33,7 @@
       </div>
     </div>
   </section>
+  </div>
 </template>
 
 <script>
@@ -85,12 +89,12 @@ export default {
   color: white;
   margin-left: 5vw;
   margin-right: 5vw;
-  padding-top: 10px;
+  margin-top: 5vw;
   padding-bottom: 10px;
 }
 .button {
-  float: right;
   margin-top: 1vw;
+  position: relative;
 }
 .tiles {
   margin-top:3vw ;
@@ -105,5 +109,16 @@ p {
 }
 .card{
     margin-bottom: 1vw;
+}
+.buttons{
+    position: relative;
+}
+.add-data{
+  float: left;
+  margin-left: 5vw;
+  margin-bottom: 2vw;
+}
+.is-half{
+  margin-top: 2.5vw;
 }
 </style>
