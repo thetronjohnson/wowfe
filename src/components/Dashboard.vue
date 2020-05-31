@@ -4,7 +4,7 @@
   <section>
     <div class="columns">
       <div class="column is-half">
-            <router-link to="/add-data" class="button add-data is-primary">Add Data</router-link>
+            <router-link to="/add-data" class="button add-data is-primary">Add Today's Measurement</router-link>
         <h1 class="title" id="profile">{{ name }}'s Contributions</h1>
         <div class="container table">
           <b-table :data="data" :columns="columns"></b-table>

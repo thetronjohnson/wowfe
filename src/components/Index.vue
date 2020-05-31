@@ -16,7 +16,7 @@
             :attribution="attribution"
           />
           <span v-for="(marker, index) in markers" v-bind:key="index">
-            <l-marker v-bind:lat-lng="marker.coord">
+            <l-marker v-bind:lat-lng="marker.coord" @click="updateBase(marker.todayValue)">
               <l-popup>
                 <div @click="innerClick">{{ marker.name }}</div>
                 <p>Has it rained today ? {{ marker.todayValue > 0 ? `Yes, ${marker.todayValue} mm` : 'No' }}</p>
@@ -27,19 +27,22 @@
         </l-map>
       </section>
     </div>
-    <div class="bar">
-    <div class="columns">
+    <div class="bar" v-if="city">
+    <div class="columns is-success">
       <div class="column block">
-         <h3 class="bar-data">City Name {goes here}</h3>
+         <h3 class="bar-data">District: {{ city }}</h3>
       </div>
       <div class="column block">
-         <h3 class="bar-data">Temperature {goes here}</h3>
+        <h3 class="bar-data">Rainfall: {{ rain }}</h3>
+     </div>
+      <div class="column block">
+         <h3 class="bar-data">Temperature: {{ temp }}</h3>
       </div>
       <div class="column block">
-         <h3 class="bar-data">Wind Speed {goes here}</h3>
+         <h3 class="bar-data">Wind: {{ wind }}</h3>
       </div>
       <div class="column block">
-         <h3 class="bar-data">Humidity {goes here}</h3>
+         <h3 class="bar-data">Humidity: {{ humidity }}</h3>
       </div>      
     </div>
     </div>
@@ -94,6 +97,12 @@ export default {
     return {
       user: this.$store.state.loggedIn,
 
+      city: false,
+      rain: 2,
+      temp: 27,
+      wind: 12,
+      humidity: 100,
+
       zoom: 8,
       center: latLng(10.2974, 76.3419),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -126,7 +135,8 @@ export default {
             name: item.name,
             coord: latLng(item.lat, item.lng),
             place: item.place,
-            avgYear: Math.random() * 20
+            avgYear: parseInt(Math.random() * 1000),
+            todayValue: parseInt(Math.random() * 10)
           })
         })
       })
@@ -137,6 +147,10 @@ export default {
     },
     centerUpdate(center) {
       this.currentCenter = center;
+    },
+    updateBase (r) {
+      this.city = 'Chalakkudy'
+      this.rain = r
     }
   },
 
