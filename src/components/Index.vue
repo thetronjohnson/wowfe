@@ -30,16 +30,16 @@
     <div class="bar">
     <div class="columns">
       <div class="column block">
-         <h3>Temperature {goes here}</h3>
+         <h3 class="bar-data">City Name {goes here}</h3>
       </div>
       <div class="column block">
-         <h3>Humidity {goes here}</h3>
+         <h3 class="bar-data">Temperature {goes here}</h3>
       </div>
       <div class="column block">
-         <h3>Wind {goes here}</h3>
+         <h3 class="bar-data">Wind Speed {goes here}</h3>
       </div>
       <div class="column block">
-         <h3>Temperature {goes here}</h3>
+         <h3 class="bar-data">Humidity {goes here}</h3>
       </div>      
     </div>
     </div>
@@ -196,5 +196,12 @@ export default {
 }
 .bar:hover{
    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.bar-data{
+  font-weight: bolder;
+  color: black;
+  text-align: left;
+  padding-left:2vw;
+  padding-top: 1vw;
 }
 </style>

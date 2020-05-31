@@ -25,13 +25,16 @@
                     </router-link>
                     <router-link to="/profile" class="button is-white" v-if="user">
                         Profile
+                    </router-link> 
+                    <router-link to="/dashboard" class="button is-primary is-inverted" v-if="user">
+                        Dashboard
                     </router-link>                      
                     <router-link to="/login" class="button is-light" v-if="!user">
                         Log in
                     </router-link>
-                    <a class="button is-danger" v-if="user">
+                    <router-link class="button is-danger" v-if="user" to="/" @click="user=!user">
                         Log out
-                    </a>
+                    </router-link>
                 </div>
             </b-navbar-item>
         </template>
