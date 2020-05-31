@@ -39,6 +39,8 @@ export default {
       this.axios.post(this.$API.user.login, this.form).then((response) => {
         if (response.status === 200) {
           // TODO: store response.data.token
+          this.$store.commit('setToken', response.data.token)
+          this.$router.push('/dashboard')
         } else {
           // TODO: show response.error
         }

@@ -32,9 +32,9 @@
                     <router-link to="/login" class="button is-light" v-if="!user">
                         Log in
                     </router-link>
-                    <router-link class="button is-danger" v-if="user" to="/" @click="user=!user">
+                    <b-button class="button is-danger" v-if="user" @click="logOut">
                         Log out
-                    </router-link>
+                    </b-button>
                 </div>
             </b-navbar-item>
         </template>
@@ -43,13 +43,19 @@
 
 <script>
 export default {
-    name: 'Navbar',
-    data(){
-      return{
-        // if user is logged in then show log out and avatar, else show login adn volunteer
-        user:true,
-      }
-}
+  name: 'Navbar',
+  computed: {
+    user () {
+      // if user is logged in then show log out and avatar, else show login adn volunteer
+      return this.$store.state.loggedIn
+    }
+  },
+  methods: {
+    logOut () {
+      this.$store.commit('logOut')
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 <style scoped>
