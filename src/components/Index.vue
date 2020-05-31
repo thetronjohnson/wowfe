@@ -74,7 +74,7 @@ export default {
     LPopup
   },
 
-  data () {
+  data() {
     return {
       user: false,
 
@@ -83,7 +83,7 @@ export default {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      
+
       currentZoom: 11.5,
       currentCenter: latLng(10.2974, 76.3419),
 
@@ -92,19 +92,27 @@ export default {
       },
 
       markers: [
-        {
-          coord: latLng(10.2974, 76.3419),
-          name: 'Vassuvettan',
-          todayValue: '2',
-          avgYear: '4'
-        }
+        // {
+        // coord: latLng(10.2974, 76.3419),
+        // name: 'Vassuvettan',
+        // todayValue: '2',
+        // avgYear: '4'
+        // }
       ]
     }
   },
 
   methods: {
-    initMap () {
-
+    initMap() {
+      this.axios.get(this.$API.gauge.getAll).then((response) => {
+        response.data.forEach((item) => {
+          this.markers.push({
+            name: item.name,
+            coord: latLng(item.lat, item.lng),
+            place: item.place
+          })
+        })
+      })
     },
 
     zoomUpdate(zoom) {
@@ -112,16 +120,10 @@ export default {
     },
     centerUpdate(center) {
       this.currentCenter = center;
-    },
-    showLongText() {
-      this.showParagraph = !this.showParagraph;
-    },
-    innerClick() {
-      alert("Click!");
     }
   },
 
-  mounted () {
+  mounted() {
     this.initMap()
   }
 };
