@@ -76,6 +76,7 @@ export default {
           // TODO: show response.errors.message
         }
       })
+      this.$buefy.toast.open(`Added guage`)
     },
 
     getPlaceSuggestions() {
