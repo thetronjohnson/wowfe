@@ -23,6 +23,7 @@ Vue.config.productionTip = false
 const API_URL = 'http://localhost:3000/api'
 Vue.prototype.$API = {
   user: {
+    check: `${API_URL}/users/check`,
     login: `${API_URL}/users/login`,
     register: `${API_URL}/users/register`
   },
@@ -68,6 +69,17 @@ store.subscribe((mutation, state) => {
     axios.defaults.headers.common.Authorization = state.token
   }
 })
+
+if (store.state.token) {
+  axios.defaults.headers.common.Authorization = store.state.token
+
+  axios.get(Vue.prototype.$API.user.check).catch((error) => {
+    if (error.response.status === 401) {
+      store.commit('logOut')
+      router.push('/')
+    }
+  })
+}
 
 new Vue({
   router,
