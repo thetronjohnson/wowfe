@@ -25,11 +25,13 @@ Vue.prototype.$API = {
   user: {
     login: `${API_URL}/users/login`,
     register: `${API_URL}/users/register`
+  },
+  gauge: {
+    getAll: `${API_URL}/gauge/getAll`
   }
 }
 
 const store = new Vuex.Store({
-
 
 })
 
