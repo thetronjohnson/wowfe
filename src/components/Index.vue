@@ -78,7 +78,7 @@ export default {
     return {
       user: false,
 
-      zoom: 11,
+      zoom: 8,
       center: latLng(10.2974, 76.3419),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
@@ -109,7 +109,8 @@ export default {
           this.markers.push({
             name: item.name,
             coord: latLng(item.lat, item.lng),
-            place: item.place
+            place: item.place,
+            avgYear: Math.random() * 20
           })
         })
       })
