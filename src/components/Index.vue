@@ -92,7 +92,7 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: this.$store.state.loggedIn,
 
       zoom: 8,
       center: latLng(10.2974, 76.3419),

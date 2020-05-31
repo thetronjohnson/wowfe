@@ -32,11 +32,46 @@ Vue.prototype.$API = {
 }
 
 const store = new Vuex.Store({
+  state: {
+    token: '',
+    loggedIn: false
+  },
+  mutations: {
+    init (state) {
+      // Check if the ID exists
+      if (window.localStorage.getItem('store')) {
+        this.replaceState(
+          Object.assign(state, JSON.parse(window.localStorage.getItem('store')))
+        )
+      }
+    },
 
+    setToken (state, value) {
+      state.token = value
+      state.loggedIn = true
+    },
+
+    logOut (state) {
+      state.token = ''
+      state.loggedIn = false
+    }
+  }
+})
+
+store.commit('init')
+
+store.subscribe((mutation, state) => {
+  // Store the state object as a JSON string
+  window.localStorage.setItem('store', JSON.stringify(state))
+
+  if (state.token) {
+    axios.defaults.headers.common.Authorization = state.token
+  }
 })
 
 new Vue({
   router,
+  store,
   render: h => h(Navbar)
 }).$mount('#nav-bar')
 
