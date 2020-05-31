@@ -2,8 +2,8 @@
     <b-navbar class="is-primary">
         <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
-                <img
-                    src="#"
+                <img class="wow"
+                    src="./assets/wow.png"
                     alt="WOW"
                 >
             </b-navbar-item>
@@ -53,7 +53,4 @@ export default {
 }
 </script>
 <style scoped>
-.avatar{
-    color:white;
-}
 </style>
