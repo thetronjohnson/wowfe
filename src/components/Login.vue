@@ -64,7 +64,7 @@ export default {
   margin-top: 1vw;
 }
  .title{
-     margin-top:10vw;
+     margin-top:5vw;
      background-color:hsl(217, 71%, 53%);
      color: white;
      margin-left: 25vw;

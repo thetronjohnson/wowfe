@@ -29,6 +29,9 @@ Vue.prototype.$API = {
   },
   gauge: {
     getAll: `${API_URL}/gauge/getAll`
+  },
+  rain: {
+    add: `${API_URL}/rain/add`
   }
 }
 
