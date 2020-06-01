@@ -41,7 +41,8 @@ const store = new Vuex.Store({
   state: {
     token: '',
     user: {
-      name: ''
+      name: '',
+      username: ''
     },
     loggedIn: false
   },
@@ -66,7 +67,7 @@ const store = new Vuex.Store({
     },
 
     setUser (state, payload) {
-      state.user = {...payload}
+      state.user = payload
     }
   }
 })
@@ -85,8 +86,8 @@ store.subscribe((mutation, state) => {
 if (store.state.token) {
   axios.defaults.headers.common.Authorization = store.state.token
 
-  axios.get(Vue.prototype.$API.user.check).catch((error) => {
-    if (error.response.status === 401) {
+  axios.get(Vue.prototype.$API.user.check).catch((e) => {
+    if (e.response.status === 401) {
       store.commit('logOut')
       router.push('/')
     }

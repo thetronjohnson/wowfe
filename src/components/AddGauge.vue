@@ -11,6 +11,7 @@
             v-model="form.place"
             display-attribute="city"
             value-attribute="city"
+            :debounce=1000
             :list="getPlaceSuggestions"
             :filter-by-query="true"
             @select="selectPlace">
@@ -100,7 +101,7 @@ export default {
         ).then(response => {
           const places = []
           response.data.addresses.forEach(item => {
-            if (item.city && places.indexOf(item) === -1) {
+            if (item.city && !item.placeLabel) {
               places.push(item)
             }
           })

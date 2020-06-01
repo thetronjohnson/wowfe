@@ -1,28 +1,36 @@
 <template>
   <div>
-    <section>
+    <section class="main">
       <div class="columns">
         <div class="column is-half">
-          <router-link to="/add-data" class="button add-data is-primary">Add Today's Measurement</router-link>
-          <h1 class="title" id="profile">{{ name }}'s Contributions</h1>
-          <div class="container table">
-            <b-table :data="data" :columns="columns"></b-table>
+          <div>
+            <router-link to="/add-data" class="button add-data is-primary">Add Today's Measurement</router-link>
+          </div>
+          <div class="content">
+            <h1 class="title" id="profile">{{ name }}'s Contributions</h1>
+            <div class="container table">
+              <b-table :data="data" :columns="columns"></b-table>
+            </div>
           </div>
         </div>
         <div class="column tiles">
           <div class="buttons">
             <router-link to="/add-gauge" class="button is-primary ">Add Gauge</router-link>
           </div>
-          <div class="card" v-for="gauge in gauges" :key="gauge">
+          <div class="" v-if="gauges.length === 0">
+            You don't have any gauges.
+            <router-link to="/add-gauge" class="button is-primary ">Add A Gauge</router-link>
+          </div>
+          <div class="card" v-for="(gauge, index) in gauges" :key="index">
             <header class="card-header">
-              <p class="card-header-title">{{gauge.name}}</p>
+              <p class="card-header-title">{{ gauge.name }}</p>
               <a href="#" class="card-header-icon" aria-label="more options">
               </a>
             </header>
             <div class="card-content">
               <div class="content">
-                <p>{{gauge.place}}</p>
-                <p>{{gauge.lastreading}}</p>
+                <p>{{ gauge.place }}</p>
+                <p>{{ gauge.lastreading }}</p>
               </div>
             </div>
             <footer class="card-footer">
@@ -51,7 +59,7 @@ export default {
     return {
       data,
       gauges,
-      name: this.$store.state.name,
+      name: this.$store.state.name || this.$store.state.user.username,
       columns: [
         {
           field: "id",
@@ -91,19 +99,6 @@ export default {
   margin-left: 5vw;
   margin-right: 5vw;
 }
-.title {
-  margin-top: 3vw;
-  background-color: hsl(217, 71%, 53%);
-  color: white;
-  margin-left: 5vw;
-  margin-right: 5vw;
-  margin-top: 5vw;
-  padding-bottom: 10px;
-}
-.button {
-  margin-top: 1vw;
-  position: relative;
-}
 .tiles {
   margin-top:3vw ;
   margin-left: 12vw;
@@ -116,17 +111,17 @@ p {
   padding-right: 10px;
 }
 .card{
-    margin-bottom: 1vw;
+  margin-bottom: 1vw;
 }
 .buttons{
-    position: relative;
+  position: relative;
 }
 .add-data{
   float: left;
   margin-left: 5vw;
   margin-bottom: 2vw;
 }
-.is-half{
+.main {
   margin-top: 2.5vw;
 }
 </style>

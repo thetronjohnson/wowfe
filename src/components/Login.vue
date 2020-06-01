@@ -39,7 +39,8 @@ export default {
       this.axios.post(this.$API.user.login, this.form).then((response) => {
         if (response.status === 200) {
           this.$store.commit('setUser', {
-            name: response.data.name
+            name: response.data.name,
+            username: response.data.username
           })
           this.$store.commit('setToken', response.data.token)
           this.$router.push('/dashboard')
