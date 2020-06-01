@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="main">
     <h1 class="title">Add Rain Gauge</h1>
     <form class="gaugeform container" @submit="submitForm">
       <b-field label="Gauge Name" :type="formError.name ? 'is-danger' : 'is-primary'" v-bind:message="formError.name" class="info">
@@ -78,7 +78,10 @@ export default {
       this.axios.post(this.$API.gauge.add, this.form).then((response) => {
         if (response.status === 201) {
           this.form.name = ''
-          this.$buefy.toast.open(`Added gauge`)
+          this.$buefy.toast.open({
+            message: `Added gauge`,
+            type: 'is-success'
+          })
         }
       }).catch(e => {
         this.formError = {...this.formFields}
@@ -137,7 +140,6 @@ export default {
   margin-top: 1vw;
 }
 .title {
-  margin-top: 5vw;
   background-color: hsl(217, 71%, 53%);
   color: white;
   margin-left: 25vw;

@@ -1,11 +1,15 @@
 <template>
-  <section>
+  <section class="main">
     <h1 class="title">Add Today's Rain Measurement</h1>
     <form class="volunteerform container" @submit="submitForm">
       <b-field label="Guage" type="is-primary" class="info">
-        <b-select expanded>
-          <option selected>Guage 1</option>
-          <option>Guage 2</option>
+        <b-select v-model="form.gid" expanded>
+          <option
+            v-for="gauge in gauges"
+            :value="gauge._id"
+            :key="gauge._id">
+            {{ gauge.name }}
+          </option>
         </b-select>
       </b-field>
       <b-field label="Did it rain today ?">
@@ -15,7 +19,7 @@
           {{ rainToday ? 'Yes' : 'No' }}
         </b-checkbox>
       </b-field>
-      <b-field label="Rain in mm" type="is-primary" class="info" v-if="rainToday">
+      <b-field label="Rain in mm" type="is-primary" class="info" v-if="rainToday === 'Yes'">
         <b-input v-model="form.measurement" placeholder="Enter rain data in mm"></b-input>
       </b-field>
       <b-field v-model="form.notes" label="Notes" type="is-primary" class="info">
@@ -37,15 +41,34 @@ export default {
 
   data () {
     return {
-      rainToday: false,
+      gauges: {},
+      rainToday: 'No',
       form: {
+        gid: '',
         measurement: -1,
         notes: ''
       }
     }
   },
 
+  watch: {
+    rainToday (newValue) {
+      if (newValue == 'Yes') {
+        this.form.measurement = 0
+      } else {
+        this.form.measurement = -1
+      }
+    }
+  },
+
   methods: {
+    init () {
+      this.axios.get(this.$API.gauge.getMine).then((response) => {
+        this.gauges = response.data
+        this.form.gid = this.gauges[0]._id
+      })
+    },
+
     submitForm (e) {
       e.preventDefault()
 
@@ -56,6 +79,10 @@ export default {
       })
       this.$buefy.toast.open(`Added today's data`)
     }
+  },
+
+  mounted () {
+    this.init()
   }
 }
 </script>
@@ -73,13 +100,12 @@ export default {
   float: left;
   margin-top: 1vw;
 }
- .title{
-     margin-top:5vw;
-     background-color:hsl(217, 71%, 53%);
-     color: white;
-     margin-left: 25vw;
-     margin-right: 25vw;
-     padding-top: 10px;
-     padding-bottom: 10px;
- }
+.title{
+  background-color:hsl(217, 71%, 53%);
+  color: white;
+  margin-left: 25vw;
+  margin-right: 25vw;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 </style>

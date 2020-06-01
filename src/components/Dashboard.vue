@@ -5,9 +5,9 @@
         <div class="column is-half">
           <div>
             <router-link to="/add-data" class="button add-data is-primary">Add Today's Measurement</router-link>
-          </div>
+          </div><br/>
           <div class="content">
-            <h1 class="title" id="profile">{{ name }}'s Contributions</h1>
+            <h1 id="profile">{{ name }}'s Contributions</h1>
             <div class="container table">
               <b-table :data="data" :columns="columns"></b-table>
             </div>
@@ -82,7 +82,7 @@ export default {
   },
 
   methods: {
-    init() {
+    init () {
       this.axios.get(this.$API.gauge.getMine).then((response) => {
         this.gauges = response.data
       })
@@ -115,13 +115,5 @@ p {
 }
 .buttons{
   position: relative;
-}
-.add-data{
-  float: left;
-  margin-left: 5vw;
-  margin-bottom: 2vw;
-}
-.main {
-  margin-top: 2.5vw;
 }
 </style>

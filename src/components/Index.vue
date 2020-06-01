@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <div>
       <h1 class="title">What's Our Weather  ?</h1>
       <section class="hero is-light is-medium content">
@@ -166,15 +166,7 @@ export default {
     margin-right: 4vw;
     margin-top: -1vw;
 }
-.title{
-    margin-top:2vw;
-    background-color:hsl(217, 71%, 53%);
-    color: white;
-    margin-left: 4vw;
-    margin-right: 4vw;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
+
 .sec-container{
     margin-left: 4vw;
     margin-right: 4vw;
