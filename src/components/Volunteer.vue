@@ -1,21 +1,21 @@
 <template>
   <section>
     <h1 class="title">Volunteer with WOW</h1>
-    <form class="volunteerform container" @submit="submitForm" ref="form">
-      <b-field label="Email" type="is-primary" class="info">
+    <form class="volunteerform container" @submit="submitForm">
+      <b-field label="Username" :type="formError.username ? 'is-danger' : 'is-primary'" v-bind:message="formError.username" class="info">
+        <b-input v-model="form.username" placeholder="Choose your username"></b-input>
+      </b-field>
+      <b-field label="Email" :type="formError.email ? 'is-danger' : 'is-primary'" v-bind:message="formError.email" class="info">
         <b-input v-model="form.email" placeholder="Enter your email"></b-input>
       </b-field>
-      <b-field label="Username" type="is-primary" class="info">
-        <b-input v-model="form.username" maxlength="30" placeholder="Choose your username"></b-input>
+      <b-field label="Password" :type="formError.password ? 'is-danger' : 'is-primary'" v-bind:message="formError.password" class="info">
+        <b-input v-model="form.password" type="password" placeholder="Enter your password"></b-input>
       </b-field>
-      <b-field label="Password" type="is-primary" class="info">
-        <b-input  v-model="form.password1" type="password" placeholder="Enter your password"></b-input>
-      </b-field>
-      <b-field label="Confirm password" type="is-primary" class="info">
+      <b-field label="Confirm password" :type="formError.password2 ? 'is-danger' : 'is-primary'" v-bind:message="formError.password2" class="info">
         <b-input v-model="form.password2" type="password" placeholder="Confirm your password"></b-input>
       </b-field>
       <b-field>
-        <b-button class="button is-primary" type="submit">
+        <b-button native-type="submit" class="button is-primary">
           Register
         </b-button>
       </b-field>
@@ -28,14 +28,16 @@ export default {
   name: 'Volunteer',
 
   data () {
+    const formFields = {
+      email: '',
+      username: '',
+      password: '',
+      password2: '',
+    }
     return {
-      form: {
-        email: '',
-        username: '',
-        password1: '',
-        password2: '',
-        errors: []
-      }
+      formFields,
+      form: {...formFields},
+      formError: {}
     }
   },
   
@@ -43,30 +45,36 @@ export default {
     submitForm (e) {
       e.preventDefault()
 
-      if((this.form.password1 === this.form.password2) && this.form.username && this.form.email){
-        return true;
+      this.formError = {...this.formFields}
+
+      if (!this.form.username){
+        this.formError.username = 'Username is requiered';
+        return
       }
 
-      this.errors = []
-
-      if(!this.form.username){
-        this.errors.push('Username is requiered');
+      if (!this.form.email){
+        this.formError.email = 'Email is requiered';
+        return
       }
 
-      if(!this.form.email){
-        this.errors.push('Email is required')
-      }
-
-      if(this.form.password1 !== this.form.password2){
-        this.errors.push('Entered password are not the same')
+      if (this.form.password !== this.form.password2){
+        this.formError.password2 = 'Both passwords are not the same';
+        return
       }
 
       this.axios.post(this.$API.user.register, this.form).then((response) => {
         if (response.status === 201) {
           this.$store.commit('setToken', response.data.token)
           this.$router.push('/dashboard')
+        }
+      }).catch(e => {
+        if (e.response.data.errmsg) {
+          this.formError.username = e.response.data.errmsg
         } else {
-          // TODO: show response.errors.message
+          const errors = e.response.data.errors
+          for (const k in errors) {
+            this.formError[k] = errors[k].properties.message
+          }
         }
       })
     },

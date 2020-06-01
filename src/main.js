@@ -40,6 +40,9 @@ Vue.prototype.$API = {
 const store = new Vuex.Store({
   state: {
     token: '',
+    user: {
+      name: ''
+    },
     loggedIn: false
   },
   mutations: {
@@ -60,6 +63,10 @@ const store = new Vuex.Store({
     logOut (state) {
       state.token = ''
       state.loggedIn = false
+    },
+
+    setUser (state, payload) {
+      state.user = {...payload}
     }
   }
 })

@@ -18,7 +18,7 @@
           <span v-for="(marker, index) in markers" v-bind:key="index">
             <l-marker v-bind:lat-lng="marker.coord" @click="updateBase(marker.todayValue)">
               <l-popup>
-                <div @click="innerClick">{{ marker.name }}</div>
+                <div>{{ marker.name }}</div>
                 <p>Has it rained today ? {{ marker.todayValue > 0 ? `Yes, ${marker.todayValue} mm` : 'No' }}</p>
                 <p>Average Rainfall This Year {{ marker.avgYear }}</p>
               </l-popup>

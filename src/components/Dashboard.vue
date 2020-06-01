@@ -22,7 +22,7 @@
             <div class="card-content">
               <div class="content">
                 <p>{{gauge.place}}</p>
-                <p>{{gauge.coordinates}}</p>
+                <p>{{gauge.lastreading}}</p>
               </div>
             </div>
             <footer class="card-footer">
@@ -51,7 +51,7 @@ export default {
     return {
       data,
       gauges,
-      name: "Joe",
+      name: this.$store.state.name,
       columns: [
         {
           field: "id",
