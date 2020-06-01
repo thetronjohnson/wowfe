@@ -1,38 +1,37 @@
 <template>
-<div>
-  
-  <section>
-    <div class="columns">
-      <div class="column is-half">
-            <router-link to="/add-data" class="button add-data is-primary">Add Today's Measurement</router-link>
-        <h1 class="title" id="profile">{{ name }}'s Contributions</h1>
-        <div class="container table">
-          <b-table :data="data" :columns="columns"></b-table>
+  <div>
+    <section>
+      <div class="columns">
+        <div class="column is-half">
+          <router-link to="/add-data" class="button add-data is-primary">Add Today's Measurement</router-link>
+          <h1 class="title" id="profile">{{ name }}'s Contributions</h1>
+          <div class="container table">
+            <b-table :data="data" :columns="columns"></b-table>
+          </div>
         </div>
-      </div>
-      <div class="column tiles">
-        <div class="buttons">
+        <div class="column tiles">
+          <div class="buttons">
             <router-link to="/add-gauge" class="button is-primary ">Add Gauge</router-link>
-      </div>
-        <div class="card" v-for="gauge in gauges" :key="gauge">
-          <header class="card-header">
-            <p class="card-header-title">{{gauge.name}}</p>
-            <a href="#" class="card-header-icon" aria-label="more options">
-            </a>
-          </header>
-          <div class="card-content">
-            <div class="content">
+          </div>
+          <div class="card" v-for="gauge in gauges" :key="gauge">
+            <header class="card-header">
+              <p class="card-header-title">{{gauge.name}}</p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+              </a>
+            </header>
+            <div class="card-content">
+              <div class="content">
                 <p>{{gauge.place}}</p>
                 <p>{{gauge.coordinates}}</p>
+              </div>
             </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Update</a>
+            </footer>
           </div>
-          <footer class="card-footer">
-            <a href="#" class="card-footer-item">Update</a>
-          </footer>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   </div>
 </template>
 
@@ -47,10 +46,7 @@ export default {
       { id: 4, Rain: "2", date: "2016-04-10 10:28:46" },
       { id: 5, Rain: "4", date: "2016-12-06 14:38:38" }
     ];
-    const gauges= [
-        {name:'Driftx',place:'tokyo',coordinates:'(75,65)'},
-        {name:'Driftx2',place:'muvattupuzha',coordinates:'(45,65)'},
-    ];
+    const gauges = [];
 
     return {
       data,
@@ -74,7 +70,19 @@ export default {
           centered: true
         }
       ]
-    };
+    }
+  },
+
+  methods: {
+    init() {
+      this.axios.get(this.$API.gauge.getMine).then((response) => {
+        this.gauges = response.data
+      })
+    }
+  },
+
+  mounted () {
+    this.init()
   }
 };
 </script>

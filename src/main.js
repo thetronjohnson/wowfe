@@ -28,7 +28,9 @@ Vue.prototype.$API = {
     register: `${API_URL}/users/register`
   },
   gauge: {
-    getAll: `${API_URL}/gauge/getAll`
+    getAll: `${API_URL}/gauge/getAll`,
+    getMine: `${API_URL}/gauge/getMine`,
+    add: `${API_URL}/gauge/add`
   },
   rain: {
     add: `${API_URL}/rain/add`
