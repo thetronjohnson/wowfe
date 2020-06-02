@@ -1,46 +1,44 @@
 <template>
-  <div>
-    <section class="main">
-      <div class="columns">
-        <div class="column is-half">
-          <div>
-            <router-link to="/add-data" class="button add-data is-primary">Add Today's Measurement</router-link>
-          </div><br/>
-          <div class="content">
-            <h1 id="profile">{{ name }}'s Contributions</h1>
-            <div class="container table">
-              <b-table :data="data" :columns="columns"></b-table>
-            </div>
-          </div>
-        </div>
-        <div class="column tiles">
-          <div class="buttons">
-            <router-link to="/add-gauge" class="button is-primary ">Add Gauge</router-link>
-          </div>
-          <div class="" v-if="gauges.length === 0">
-            You don't have any gauges.
-            <router-link to="/add-gauge" class="button is-primary ">Add A Gauge</router-link>
-          </div>
-          <div class="card" v-for="(gauge, index) in gauges" :key="index">
-            <header class="card-header">
-              <p class="card-header-title">{{ gauge.name }}</p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p>{{ gauge.place }}</p>
-                <p>{{ gauge.lastreading }}</p>
-              </div>
-            </div>
-            <footer class="card-footer">
-              <a href="#" class="card-footer-item">Update</a>
-            </footer>
+  <section class="main container">
+    <div class="columns">
+      <div class="column is-four-fifths">
+        <div>
+          <router-link to="/add-data" class="button add-data is-primary">Add Today's Measurement</router-link>
+        </div><br/>
+        <div class="content">
+          <h1 id="profile">{{ name }}'s Contributions</h1>
+          <div class="container table">
+            <b-table :data="data" :columns="columns"></b-table>
           </div>
         </div>
       </div>
-    </section>
-  </div>
+      <div class="column tiles">
+        <div class="buttons">
+          <router-link to="/add-gauge" class="button is-primary ">Add Gauge</router-link>
+        </div>
+        <div class="" v-if="gauges.length === 0">
+          You don't have any gauges.
+          <router-link to="/add-gauge" class="button is-primary ">Add A Gauge</router-link>
+        </div>
+        <div class="card" v-for="(gauge, index) in gauges" :key="index">
+          <header class="card-header">
+            <p class="card-header-title">{{ gauge.name }}</p>
+            <a href="#" class="card-header-icon" aria-label="more options">
+            </a>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>{{ gauge.place }}</p>
+              <p>{{ gauge.lastreading }}</p>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <a href="#" class="card-footer-item">Update</a>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -98,11 +96,6 @@ export default {
 .table {
   margin-left: 5vw;
   margin-right: 5vw;
-}
-.tiles {
-  margin-top:3vw ;
-  margin-left: 12vw;
-  margin-right: 12vw;
 }
 p {
   font-size: 14px;

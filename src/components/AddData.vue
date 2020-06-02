@@ -1,8 +1,8 @@
 <template>
-  <section class="main">
+  <section class="main container">
     <h1 class="title">Add Today's Rain Measurement</h1>
-    <form class="volunteerform container" @submit="submitForm">
-      <b-field label="Guage" type="is-primary" class="info">
+    <form @submit="submitForm">
+      <b-field label="Gauge" type="is-primary" class="info">
         <b-select v-model="form.gid" expanded>
           <option
             v-for="gauge in gauges"
@@ -22,8 +22,8 @@
       <b-field label="Rain in mm" type="is-primary" class="info" v-if="rainToday === 'Yes'">
         <b-input v-model="form.measurement" placeholder="Enter rain data in mm"></b-input>
       </b-field>
-      <b-field v-model="form.notes" label="Notes" type="is-primary" class="info">
-        <b-input placeholder="Any notes"></b-input>
+      <b-field label="Notes" type="is-primary" class="info">
+        <b-input v-model="form.notes" placeholder="Any notes"></b-input>
       </b-field>
       <b-field>
         <button class="button is-primary">
@@ -45,18 +45,8 @@ export default {
       rainToday: 'No',
       form: {
         gid: '',
-        measurement: -1,
+        measurement: 0,
         notes: ''
-      }
-    }
-  },
-
-  watch: {
-    rainToday (newValue) {
-      if (newValue == 'Yes') {
-        this.form.measurement = 0
-      } else {
-        this.form.measurement = -1
       }
     }
   },
@@ -89,23 +79,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.volunteerform{
-  margin-left: 25vw;
-  margin-right: 25vw;
-}
-.info{
-  text-align: left;
-}
-.button{
-  float: left;
-  margin-top: 1vw;
-}
-.title{
-  background-color:hsl(217, 71%, 53%);
-  color: white;
-  margin-left: 25vw;
-  margin-right: 25vw;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
+
 </style>

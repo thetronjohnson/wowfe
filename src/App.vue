@@ -20,7 +20,6 @@ export default {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   background-color:white;
 }
 
@@ -35,5 +34,18 @@ export default {
   margin-right: 25%;
   padding-top: 10px;
   padding-bottom: 10px;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 960px) {
+  .main {
+    padding: 20px 2%
+  }
+}
+@media screen and (min-width: 1000px) {
+  .main.container {
+    max-width: 1000px
+  }
 }
 </style>

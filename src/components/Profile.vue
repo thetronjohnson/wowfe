@@ -1,7 +1,7 @@
 <template>
-  <section class="main">
+  <section class="main container">
     <h1 class="title" id="profile"> {{ name }}'s Profile</h1>
-    <div class="loginform container">
+    <div>
       <b-field label="Name" type="is-primary" class="info" expanded>
         <b-input type="text" placeholder="Enter your name"></b-input>
       </b-field>
@@ -25,9 +25,7 @@
       </b-field>
 
       <b-field>
-        <button class="button is-primary">
-          Update
-        </button>
+        <button class="button is-pulled-left is-primary">Update</button>
       </b-field>
     </div>
   </section>
@@ -46,23 +44,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.loginform{
-  margin-left: 25vw;
-  margin-right: 25vw;
+.info {
+  //text-align: left;
 }
-.info{
-  text-align: left;
-}
-.button{
-  float: left;
-  margin-top: 1vw;
-}
-.title{
-  background-color:hsl(217, 71%, 53%);
-  color: white;
-  margin-left: 25vw;
-  margin-right: 25vw;
-  padding-top: 10px;
-  padding-bottom: 10px;
- }
 </style>
