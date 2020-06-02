@@ -23,4 +23,17 @@ export default {
   text-align: center;
   background-color:white;
 }
+
+.main {
+  padding-top: 2vh;
+}
+
+.title {
+  background-color:hsl(217, 71%, 53%);
+  color: white !important;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 </style>

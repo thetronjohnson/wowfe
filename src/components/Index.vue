@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <div>
       <h1 class="title">What's Our Weather  ?</h1>
       <section class="hero is-light is-medium content">
@@ -18,7 +18,7 @@
           <span v-for="(marker, index) in markers" v-bind:key="index">
             <l-marker v-bind:lat-lng="marker.coord" @click="updateBase(marker.todayValue)">
               <l-popup>
-                <div @click="innerClick">{{ marker.name }}</div>
+                <div>{{ marker.name }}</div>
                 <p>Has it rained today ? {{ marker.todayValue > 0 ? `Yes, ${marker.todayValue} mm` : 'No' }}</p>
                 <p>Average Rainfall This Year {{ marker.avgYear }}</p>
               </l-popup>
@@ -166,15 +166,7 @@ export default {
     margin-right: 4vw;
     margin-top: -1vw;
 }
-.title{
-    margin-top:2vw;
-    background-color:hsl(217, 71%, 53%);
-    color: white;
-    margin-left: 4vw;
-    margin-right: 4vw;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
+
 .sec-container{
     margin-left: 4vw;
     margin-right: 4vw;

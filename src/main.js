@@ -28,7 +28,9 @@ Vue.prototype.$API = {
     register: `${API_URL}/users/register`
   },
   gauge: {
-    getAll: `${API_URL}/gauge/getAll`
+    getAll: `${API_URL}/gauge/getAll`,
+    getMine: `${API_URL}/gauge/getMine`,
+    add: `${API_URL}/gauge/add`
   },
   rain: {
     add: `${API_URL}/rain/add`
@@ -38,6 +40,10 @@ Vue.prototype.$API = {
 const store = new Vuex.Store({
   state: {
     token: '',
+    user: {
+      name: '',
+      username: ''
+    },
     loggedIn: false
   },
   mutations: {
@@ -58,6 +64,10 @@ const store = new Vuex.Store({
     logOut (state) {
       state.token = ''
       state.loggedIn = false
+    },
+
+    setUser (state, payload) {
+      state.user = payload
     }
   }
 })
@@ -76,8 +86,8 @@ store.subscribe((mutation, state) => {
 if (store.state.token) {
   axios.defaults.headers.common.Authorization = store.state.token
 
-  axios.get(Vue.prototype.$API.user.check).catch((error) => {
-    if (error.response.status === 401) {
+  axios.get(Vue.prototype.$API.user.check).catch((e) => {
+    if (e.response.status === 401) {
       store.commit('logOut')
       router.push('/')
     }
