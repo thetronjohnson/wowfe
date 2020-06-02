@@ -37,7 +37,11 @@ Vue.prototype.$API = {
     add: `${API_URL}/gauge/add`
   },
   rain: {
-    add: `${API_URL}/rain/add`
+    add: `${API_URL}/rain/add`,
+    measurements: {
+      hours24: `${API_URL}/rain/measurements/24Hours`,
+      mine: `${API_URL}/rain/measurements/mine`
+    }
   }
 }
 

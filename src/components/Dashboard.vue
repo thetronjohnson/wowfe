@@ -8,7 +8,7 @@
         <div class="content">
           <h1 id="profile">{{ name }}'s Contributions</h1>
           <div class="container table">
-            <b-table :data="data" :columns="columns"></b-table>
+            <b-table :data="measurements" :columns="columns"></b-table>
           </div>
         </div>
       </div>
@@ -45,18 +45,9 @@
 export default {
   name: "Dashboard",
   data() {
-    const data = [
-      { id: 1, Rain: "12", date: "2016-10-15 13:43:27" },
-      { id: 2, Rain: "15", date: "2016-12-15 06:00:53" },
-      { id: 3, Rain: "100", date: "2016-04-26 06:26:28" },
-      { id: 4, Rain: "2", date: "2016-04-10 10:28:46" },
-      { id: 5, Rain: "4", date: "2016-12-06 14:38:38" }
-    ];
-    const gauges = [];
-
     return {
-      data,
-      gauges,
+      measurements: [],
+      gauges: [],
       name: this.$store.state.name || this.$store.state.user.username,
       columns: [
         {
@@ -83,6 +74,10 @@ export default {
     init () {
       this.axios.get(this.$API.gauge.getMine).then((response) => {
         this.gauges = response.data
+      })
+
+      this.axios.get(this.$API.rain.measurements.mine).then((response) => {
+        this.measurements = response.data
       })
     }
   },

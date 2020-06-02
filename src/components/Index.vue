@@ -129,14 +129,14 @@ export default {
 
   methods: {
     initMap() {
-      this.axios.get(this.$API.gauge.getAll).then((response) => {
+      this.axios.get(this.$API.rain.measurements.hours24).then((response) => {
         response.data.forEach((item) => {
           this.markers.push({
             name: item.name,
             coord: latLng(item.lat, item.lng),
             place: item.place,
-            avgYear: parseInt(Math.random() * 1000),
-            todayValue: parseInt(Math.random() * 10)
+            avgYear: item.avgYear,
+            todayMeasurement: parseInt(Math.random() * 10)
           })
         })
       })
