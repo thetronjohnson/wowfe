@@ -20,7 +20,12 @@ Vue.use(Vuex)
 
 Vue.config.productionTip = false
 
-const API_URL = 'http://localhost:3000/api'
+if (window.location.host.indexOf('whatsourweather') > 0) {
+  const API_URL = 'https://whatsourweather.herokuapp.com/api'
+} else {
+  const API_URL = 'http://localhost:3000/api'
+}
+
 Vue.prototype.$API = {
   user: {
     check: `${API_URL}/users/check`,
