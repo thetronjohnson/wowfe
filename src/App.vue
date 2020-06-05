@@ -37,8 +37,7 @@ export default {
   text-align: center;
 }
 
-
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1000px) {
   .main {
     padding: 20px 2%
   }
